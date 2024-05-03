@@ -1,0 +1,17 @@
+{
+  "name": "express-api",
+  "version": "1.0.0",
+  "description": "This is node.js and express.js backend api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api",
+    "javascript"
+  ],
+  "author": "Farooque Reza <rezafarooque@outline.com>",
+  "license": "ISC"
+}

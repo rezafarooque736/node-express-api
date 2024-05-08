@@ -1,15 +1,15 @@
-import { config as conf } from "dotenv";
-
-conf();
-
 const _config = {
-  port: process.env.PORT || 3000,
-  mongodbURI: process.env.MONGODB_URI,
-  corsOrigins: process.env.CORS_ORIGINS,
-  accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
-  accessTokenExpiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN,
-  refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
-  refreshTokenExpiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN,
+  PORT: process.env.PORT || 3000,
+  MONGODB_URI: process.env.MONGODB_URI,
+  DB_NAME: "videotube",
+  CORS_ORIGINS: process.env.CORS_ORIGINS,
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
+  ACCESS_TOKEN_EXPIRES_IN: process.env.ACCESS_TOKEN_EXPIRES_IN,
+  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
+  REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN,
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
 };
 
 export const config = Object.freeze(_config);

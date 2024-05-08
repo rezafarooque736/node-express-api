@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
-
-import { config } from "./config";
-import { DB_NAME } from "./../constants";
+import { config } from "./config.js";
 
 const connectToMongoDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(
-      `${config.mongodbURI}/${DB_NAME}`
+      `${config.MONGODB_URI}/${config.DB_NAME}`
     );
 
     console.log(

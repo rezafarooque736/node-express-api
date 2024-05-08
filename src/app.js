@@ -1,15 +1,14 @@
 import express, { urlencoded } from "express";
-// import globalErrorHandler from "./middlewares/global-error-handler";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { config } from "./config/config";
+import { config } from "./config/config.js";
 
 const app = express();
 
 // cors configuration
 app.use(
   cors({
-    origin: config.corsOrigins,
+    origin: config.CORS_ORIGINS,
     credentials: true,
   })
 );
@@ -26,12 +25,10 @@ app.use(express.static("public"));
 // parse cookies
 app.use(cookieParser());
 
-// Routes
-app.get("/api/v1", (req, res, next) => {
-  res.json({ message: "Welcome to elib apis" });
-});
+// routes import
+import userRouter from "./routes/user.routes.js";
 
-// global error handler
-app.use(globalErrorHandler);
+// routes declaration
+app.use("/api/v1/users", userRouter);
 
 export default app;

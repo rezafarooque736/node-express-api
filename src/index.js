@@ -1,13 +1,14 @@
 import dotenv from "dotenv";
-import connectToMongoDB from "./config/db";
-import { config } from "./config/config";
+import app from "./app.js";
+import { config } from "./config/config.js";
+import connectToMongoDB from "./config/db.js";
 
-// Load env variables at the start of the app
 dotenv.config({
-  path: "./env",
+  path: "./.env",
 });
 
-const PORT = config.port;
+const PORT = config.PORT;
+console.log({ PORT });
 
 connectToMongoDB()
   .then(() => {

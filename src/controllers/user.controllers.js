@@ -298,7 +298,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 const getUserChannelProfile = asyncHandler(async (req, res) => {
   const { username } = req.params;
 
-  if (!username) throw new ApiError(400, "Please provide a username");
+  if (!username?.trim()) throw new ApiError(400, "Please provide a username");
 
   const channelProfile = await User.aggregate([
     {
@@ -349,7 +349,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
     },
   ]);
 
-  if (!channel?.length) throw new ApiError(404, "Channel not found");
+  if (!channelProfile?.length) throw new ApiError(404, "Channel not found");
 
   return res
     .status(200)

@@ -48,4 +48,4 @@ const deleteFromCloudinary = async resource_id => {
   }
 };
 
-export default { uploadOnCloudinary, deleteFromCloudinary };
+export { uploadOnCloudinary, deleteFromCloudinary };

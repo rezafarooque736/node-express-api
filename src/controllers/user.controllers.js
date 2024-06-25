@@ -86,8 +86,6 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
-  console.log(req.hostname);
-
   // 1. check if email or username is provided
   if (!username && !email) {
     throw new ApiError(400, "username or email is required");
@@ -203,15 +201,22 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { oldPassword, newPassword } = req.body;
 
+  // 1. check if old password and new password is provided
+  if (!oldPassword || !newPassword)
+    throw new ApiError(400, "Please provide a password");
+
+  // 2. check if old password is correct
   const user = await User.findById(req.user?._id);
 
   const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
 
   if (!isPasswordCorrect) throw new ApiError(401, "Invalid old password");
 
+  // 3. update password
   user.password = newPassword;
-  await user.save({ validaBeforeSave: false });
+  await user.save({ validateBeforeSave: false });
 
+  // 4. send response to frontend
   return res
     .status(200)
     .json(new ApiResponse(200, {}, "Password changed Successfully"));
